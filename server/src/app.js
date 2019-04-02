@@ -14,4 +14,16 @@ app.get('/status', (req, res) => {
   })
 })
 
+app.post('/morseToLatin', (req, res) => {
+  res.send({
+    message: 'morseToLatin.'
+  })
+})
+
+app.post('/latinToMorse', (req, res) => {
+  res.send({
+    message: 'latinToMorse.'
+  })
+})
+
 app.listen(process.env.PORT || 3000)
