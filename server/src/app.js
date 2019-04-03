@@ -1,29 +1,10 @@
-const express = require('express')
-const bodyParser = require('body-parser')
-const morgan = require('morgan')
-const app = express()
-/* const http = require('http').Server(app)
-const io = require('socket.io')(http) */
+const io = require('socket.io')
+const server = io.listen(3000)
 
-app.use(bodyParser.json())
-app.use(morgan('combined')) // istek geldiğinde, gönderen tarafın bilgilerini console'a yazar.
-
-app.get('/status', (req, res) => {
-  res.send({
-    message: 'It Seems Working Fine!'
+server.sockets.on('connection', function (socket) {
+  console.log('a new connection')
+  socket.on('button', function () {
+    console.log('received a message from the client.')
+    socket.emit('return', 'axaxaxaxaxaxa')
   })
 })
-
-app.post('/morseToLatin', (req, res) => {
-  res.send({
-    message: 'morseToLatin.'
-  })
-})
-
-app.post('/latinToMorse', (req, res) => {
-  res.send({
-    message: 'latinToMorse.'
-  })
-})
-
-app.listen(process.env.PORT || 3000)

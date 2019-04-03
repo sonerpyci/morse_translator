@@ -16,8 +16,11 @@
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
-    "vue": "^2.5.2",
-    "vue-router": "^3.0.1"
+    "bootstrap": "^4.3.1",
+    "bootstrap-vue": "^2.0.0-rc.16",
+    "vue": "^2.6.10",
+    "vue-router": "^3.0.1",
+    "vue-socket.io": "^2.1.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
