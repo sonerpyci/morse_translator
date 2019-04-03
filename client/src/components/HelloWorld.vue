@@ -1,13 +1,69 @@
 <template>
   <div class="hello">
-    <span>Multiline message is:</span>
-    <p style="white-space: pre-line;">{{ content }}</p>
-    <br>
-
-    <form id="translator" @submit.prevent="sendContent">
-      <textarea rows="4" cols="50" name="latinToMorse" id="latinToMorse" v-model="content" placeholder="add multiple lines"></textarea>
-      <input type="submit" value="Convert" />
-    </form>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <b-form @reset="resetLatinContent">
+            <b-form-group
+              id="latinToMorseGroup"
+              label="Latin To Morse"
+              label-for="latinToMorse"
+              description="Once you press any key(s), content will be automatically translated."
+            >
+              <b-form-textarea
+                id="latinToMorse"
+                v-model="latinContent"
+                :state=true
+                placeholder="Enter latin content"
+                rows="8"
+                v-on:keyup="sendLatin"
+              ></b-form-textarea>
+            </b-form-group>
+            <b-button type="reset" variant="danger">Reset</b-button>
+          </b-form>
+          <br>
+          <br>
+          <br>
+          <b-form-textarea
+            id="latinToMorse"
+            v-model="morseResponse"
+            :state=true
+            placeholder="Enter latin content"
+            rows="8"
+          ></b-form-textarea>
+        </div>
+        <div class="col-md-6">
+          <b-form @reset="resetMorseContent">
+            <b-form-group
+              id="latinToMorseGroup"
+              label="Morse To Latin"
+              label-for="morseToLatin"
+              description="Once you press any key(s), content will be automatically translated."
+            >
+              <b-form-textarea
+                id="morseToLatin"
+                v-model="morseContent"
+                :state=true
+                placeholder="Enter morse content"
+                rows="8"
+                v-on:keyup="sendMorse"
+              ></b-form-textarea>
+            </b-form-group>
+            <b-button type="reset" variant="danger">Reset</b-button>
+          </b-form>
+          <br>
+          <br>
+          <br>
+          <b-form-textarea
+            id="latinToMorse"
+            v-model="latinResponse"
+            :state=true
+            placeholder="Enter latin content"
+            rows="8"
+          ></b-form-textarea>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -16,22 +72,37 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      content: 'Welcome to Your Vue.js App'
+      latinContent: '',
+      morseContent: '',
+      latinResponse: '',
+      morseResponse: ''
     }
   },
   sockets: {
     connect: function () {
-      console.log('we are in true way')
+      console.info({'socket': {'is_connected': true}})
     },
-    customEmit: function (val) {
+    morseResponse: function (val) {
       console.log(val)
+      this.morseResponse = val
+    },
+    latinResponse: function (val) {
+      console.log(val)
+      this.latinResponse = val
     }
   },
   methods: {
-    sendContent: function (val) {
-      console.log(this.$socket)
-      this.$socket.emit('button', this.content)
-      // this.content = ''
+    sendLatin: function () {
+      this.$socket.emit('onLatinContent', this.content)
+    },
+    sendMorse: function () {
+      this.$socket.emit('onMorseContent', this.content)
+    },
+    resetLatinContent: function () {
+      this.latinContent = ''
+    },
+    resetMorseContent: function () {
+      this.morseContent = ''
     }
   }
 }
