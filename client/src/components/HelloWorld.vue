@@ -83,20 +83,18 @@ export default {
       console.info({'socket': {'is_connected': true}})
     },
     morseResponse: function (val) {
-      console.log(val)
       this.morseResponse = val
     },
     latinResponse: function (val) {
-      console.log(val)
       this.latinResponse = val
     }
   },
   methods: {
     sendLatin: function () {
-      this.$socket.emit('onLatinContent', this.content)
+      this.$socket.emit('onLatinContent', this.latinContent)
     },
     sendMorse: function () {
-      this.$socket.emit('onMorseContent', this.content)
+      this.$socket.emit('onMorseContent', this.morseContent)
     },
     resetLatinContent: function () {
       this.latinContent = ''
