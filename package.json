@@ -24,7 +24,7 @@
     "vue-socket.io": "^2.1.1",
     "nodemon": "^1.18.10",
     "socket.io": "^2.2.0",
-    "shelljs": "^0.7.8",
+    "shelljs": "^0.7.8"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
