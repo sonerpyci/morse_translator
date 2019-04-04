@@ -3,8 +3,7 @@ const morseTranslator = new Morse()
 const io = require('socket.io')
 
 const portNumber = process.env.SERVER_PORT || 3000
-const server = io.listen(portNumber)
-
+const server = io.listen(portNumber, { origins: '*:*' })
 console.log('Socket server now listening on port: ', portNumber)
 
 let clientsList = []
