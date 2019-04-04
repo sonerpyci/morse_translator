@@ -2,7 +2,7 @@
   <div class="hello">
     <div class="container">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6 first">
           <b-form @reset="resetLatinContent">
             <b-form-group
               id="latinToMorseGroup"
@@ -32,7 +32,7 @@
             readonly
           ></b-form-textarea>
         </div>
-        <div class="col-md-6">
+        <div id="second" class="col-md-6">
           <b-form @reset="resetMorseContent">
             <b-form-group
               id="latinToMorseGroup"
@@ -124,5 +124,11 @@ a {
 }
 form {
   border-color: red;
+}
+
+@media only screen and (max-width: 767px) {
+  #second {
+    padding-top: 50px;
+  }
 }
 </style>
