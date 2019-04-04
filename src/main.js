@@ -9,8 +9,8 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.config.productionTip = false
-
-Vue.use(VueSocketIO, 'http://localhost:3000/')
+console.log(process.env.PORT)
+Vue.use(VueSocketIO, 'http://localhost:' + (process.env.SERVER_PORT ? process.env.SERVER_PORT : '3000') + '/')
 Vue.use(BootstrapVue)
 
 /* eslint-disable no-new */

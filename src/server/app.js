@@ -1,10 +1,10 @@
 const Morse = require('./translator')
 const morseTranslator = new Morse()
 const io = require('socket.io')
-const server = io.listen(3000)
+const server = io.listen(process.env.SERVER_PORT || 3000)
 
 let clientsList = []
-
+console.log(process.env.PORT)
 server.sockets.on('connection', function (socket) {
   console.log('\na client Connected!\n')
   clientsList.push(socket)
