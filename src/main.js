@@ -11,7 +11,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 Vue.config.productionTip = false
 const portNumber = process.env.SERVER_PORT || 3000
 console.log('Vue client now tries to connect port :', portNumber.toString())
-Vue.use(VueSocketIO, (process.env.HEROKU_URL ? 'https://' + process.env.HEROKU_URL : 'http://localhost') + '.' + (portNumber ? portNumber.toString() : '3000') + '/')
+Vue.use(VueSocketIO, (process.env.HEROKU_URL ? 'https://' + process.env.HEROKU_URL : 'http://localhost') + ':' + (portNumber ? portNumber.toString() : '3000') + '/')
 Vue.use(BootstrapVue)
 
 /* eslint-disable no-new */

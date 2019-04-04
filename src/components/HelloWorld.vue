@@ -28,8 +28,8 @@
             id="latinToMorse"
             v-model="morseResponse"
             :state=true
-            placeholder="Enter latin content"
             rows="8"
+            readonly
           ></b-form-textarea>
         </div>
         <div class="col-md-6">
@@ -58,8 +58,8 @@
             id="latinToMorse"
             v-model="latinResponse"
             :state=true
-            placeholder="Enter latin content"
             rows="8"
+            readonly
           ></b-form-textarea>
         </div>
       </div>
