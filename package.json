@@ -5,7 +5,7 @@
   "author": "Soner Paycı <sonerpayci@gmail.com>",
   "private": true,
   "scripts": {
-    "dev": "concurrently --kill-others \"webpack-dev-server --inline --progress --config build/webpack.dev.conf.js\" \"npm start --prefix ../server/\"",
+    "dev": "concurrently --kill-others \"webpack-dev-server --inline --progress --config build/webpack.dev.conf.js\" \"./node_modules/nodemon/bin/nodemon.js src/server/app.js --exec 'npm run lint && node'\"",
     "start": "npm run dev",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "e2e": "node test/e2e/runner.js",
@@ -21,7 +21,9 @@
     "concurrently": "^4.1.0",
     "vue": "^2.6.10",
     "vue-router": "^3.0.1",
-    "vue-socket.io": "^2.1.1"
+    "vue-socket.io": "^2.1.1",
+    "nodemon": "^1.18.10",
+    "socket.io": "^2.2.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
